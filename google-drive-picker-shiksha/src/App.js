@@ -24,7 +24,9 @@ function App() {
   useEffect(() => {
 
     if (data) {
-      data.docs.map((i) => console.log(i))
+
+      console.log(data);
+
     }
 
   }, [data])
