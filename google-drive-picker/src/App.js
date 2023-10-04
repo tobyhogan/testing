@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 import React, { useEffect } from 'react';
@@ -10,8 +10,8 @@ function App() {
 
   const handleOpenPicker = () => {
     openPicker({
-      clientId: "",
-      developerKey: "",
+      clientId: "694215446641-7755vkis1538vo7p678m379cj0en8odd.apps.googleusercontent.com",
+      developerKey: "AIzaSyDQ1b13IpgHtVs5DVD7TP7loADrxDWb0qM",
       viewId: "DOCS",
       showUploadView: true,
       showUploadFolders: true,
