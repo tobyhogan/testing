@@ -70,6 +70,14 @@ function startTimer() {
   }, 1000);
 }
 
+function stopTimer() {
+
+}
+
+function resetTimer() {
+  
+}
+
 function formatTime(time) {
   const minutes = Math.floor(time / 60);
   let seconds = time % 60;
