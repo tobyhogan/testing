@@ -1,0 +1,2 @@
+What do I actually need to be able to do with this timer?
+- Like just give a percentage and ahve that dictate how much the timer shows
