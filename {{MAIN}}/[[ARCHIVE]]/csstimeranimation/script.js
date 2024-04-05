@@ -1,9 +1,13 @@
 // Credit: Mateusz Rybczonec
 
+
+
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
 
+
+// defining the colors that the time left animation can show
 const COLOR_CODES = {
   info: {
     color: "green"
@@ -24,6 +28,8 @@ let timeLeft = TIME_LIMIT;
 let timerInterval = null;
 let remainingPathColor = COLOR_CODES.info.color;
 
+
+// creating the timer through html
 document.getElementById("app").innerHTML = `
 <div class="base-timer">
   <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -54,6 +60,8 @@ function onTimesUp() {
   clearInterval(timerInterval);
 }
 
+// a function that lets the time decreasing over time work
+
 function startTimer() {
   timerInterval = setInterval(() => {
     timePassed = timePassed += 1;
@@ -75,8 +83,10 @@ function stopTimer() {
 }
 
 function resetTimer() {
-  
+
 }
+
+// converting the time in seconds to minutes + seconds etc
 
 function formatTime(time) {
   const minutes = Math.floor(time / 60);
@@ -107,6 +117,8 @@ function setRemainingPathColor(timeLeft) {
       .classList.add(warning.color);
   }
 }
+
+// calculating the fraction of the timer animation to be coloured and blank etc
 
 function calculateTimeFraction() {
   const rawTimeFraction = timeLeft / TIME_LIMIT;
