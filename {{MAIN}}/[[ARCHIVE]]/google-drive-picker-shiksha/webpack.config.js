@@ -1,1 +1,0 @@
-devtool: "#inline-source-map"
