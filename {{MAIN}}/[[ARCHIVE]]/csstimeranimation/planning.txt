@@ -1,0 +1,7 @@
+What do I actually need to be able to do with this timer?
+- Like just give a percentage and ahve that dictate how much the timer shows
+
+
+====== journal ===
+
+I need to be able to integrate the timer in to the thang
