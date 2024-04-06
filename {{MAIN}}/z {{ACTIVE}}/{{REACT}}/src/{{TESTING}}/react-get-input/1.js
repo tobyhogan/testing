@@ -1,30 +1,14 @@
-class MyComponent extends React.Component {
-    constructor(props) {
-        super(props);
-        this.reset();
-    }
+import { useId, useState } from 'react';
 
-    reset() {
-        // Always set the initial state in its own function, so that
-        // you can trivially reset your components at any point.
-        this.state = {
-            inputValue: ''
-        };
-    }
+function myFunctionalComponentFunction(props) {
+  const id = useId();
+  const [input, setInput] = useState(props?.value ?? '');
+  return (
+    <div>
+    <label htmlFor={id}>Please specify:</label>
+    <input id={id} value={input} onInput={e => setInput(e.target.value)}/>
+    </div>
+  );
 
-    render() {
-        return (
-            // ...
-            <input value={this.state.inputValue} onChange={evt => this.updateInputValue(evt)}/>
-            // ...
-        );
-    },
-
-    updateInputValue(evt) {
-        const val = evt.target.value;
-        // ...       
-        this.setState({
-            inputValue: val
-        });
-    }
-});
+  
+}
