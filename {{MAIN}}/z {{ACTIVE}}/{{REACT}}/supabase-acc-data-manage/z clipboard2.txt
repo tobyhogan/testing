@@ -1,0 +1,60 @@
+        <li className='flex [&>*]:mx-2'>
+        <p> - Brush Teeth</p>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+        </li>
+        <li className='flex [&>*]:mx-2'>
+          <p> - Do Laundry</p>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+        </li>
+        <li className='flex [&>*]:mx-2'>
+          <p>- Take out Trash</p>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+        </li>
+        <li className='flex [&>*]:mx-2'>
+          <p>- Feed Pets</p>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+        </li>
+        <li className='flex [&>*]:mx-2'>
+          <p>- Go To Gym</p>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+        </li>
+        <li className='flex [&>*]:mx-2'>
+          <p>- Go for bike ride</p>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+          <input type='checkbox'></input>
+        </li>

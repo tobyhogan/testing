@@ -1,0 +1,4 @@
+nth-check: false alarm / https://stackoverflow.com/questions/71282206/github-dependabot-alert-inefficient-regular-expression-complexity-in-nth-check
+
+postcss: doesn't seem to be a major issue from research
+
