@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, Suspense, useRef } from 'react';
 import supabase from "../../supabaseClient";
 
 import AppContext from '../appContext';
@@ -11,30 +11,16 @@ import DataTable from '../components/Table';
 
 function Home() {
 
-  const [fetchError, setFetchError] = useState(null);
 
   const [todos, setTodos] = useState(null);
-
   const [todoLogs, setTodoLogs] = useState(null);
 
   const [input, setInput] = useState("");
 
   const [listUpdated, setListUpdated] = useState(0);
 
-  const [session, setSession] = useState(null);
-
-
-
-  useEffect(() => {
-
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-
-    });
-
-  }, [])
-
-
+  const [dataTable, setDataTable] = useState(<p>Data Table Loading...</p>);
+  const [dataTable1, setDataTable1] = useState(<p>Data Table 1 Loading...</p>);
 
 
 
@@ -106,83 +92,55 @@ function Home() {
 
   useEffect(() => {
 
-
     const fetchTodos = async () => {
       const { data, error } = await supabase
         .from('todos')
         .select()
 
-        
-
         if (error) {
-          setFetchError('Could not fetch todos')
           setTodos(null)
           console.log(error)
 
         }
         if (data) {
           setTodos(data)
-          setFetchError(null)
-        
+
         }
     }
 
+    fetchTodos()
 
-      fetchTodos()
-
-
-  }, [listUpdated])
-
-
-
-  
-
-  useEffect(() => {
     const fetchTodoLogs = async () => {
       const { data, error } = await supabase
         .from('todo-completions')
         .select()
 
         if (error) {
-          setFetchError('Could not fetch todo log')
           setTodoLogs(null)
           console.log(error)
 
         }
+
         if (data) {
           setTodoLogs(data)
-          setFetchError(null)
         }
-
-
     }
 
     fetchTodoLogs()
 
+
+    let dataTable = <DataTable todos={todos} todoLogs={todoLogs} deleteTodo={deleteTodo} toggleTodo={toggleTodo}></DataTable>
+
+
+    setDataTable(dataTable)
+
+
   }, [listUpdated])
 
-  function RenderTable() {
-
-    if (todos && todoLogs) {
-
-      try {
-
-        return (
-          <DataTable todos={todos} todoLogs={todoLogs} deleteTodo={deleteTodo} toggleTodo={toggleTodo}></DataTable>
-        )        
-
-      } catch (error) {
-
-        console.log("11 could not render table, data not available")
-
-      }
 
 
-    } else {
-      console.log("1.2 could not render table, data not available")
-    }
-    
-  }
+
+
 
 
 
@@ -199,7 +157,16 @@ function Home() {
 
       </div>
 
-      <RenderTable></RenderTable>
+      
+      {console.log(dataTable)}
+
+
+      {dataTable1}
+
+      {dataTable}
+
+      {<p>Hello world</p>}
+
 
 
     </div>
