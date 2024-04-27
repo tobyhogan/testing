@@ -17,11 +17,9 @@ function Home() {
 
   const [input, setInput] = useState("");
 
-  const [listUpdated, setListUpdated] = useState(0);
+  const [listUpdated, setListUpdated] = useState(1);
 
   const [dataTable, setDataTable] = useState(null);
-
-  //const [dataTable1, setDataTable1] = useState(<p>Data Table 1 Loading...</p>);
 
 
 
@@ -39,10 +37,13 @@ function Home() {
 
 
     const { error1 } = await supabase
-    .from('todo-completions')
-    .insert({ id: data[0].id})
+      .from('todo-completions')
+      .insert({ id: data[0].id})
 
     setListUpdated(listUpdated + 1);
+
+
+    console.log(listUpdated)
 
 
 
@@ -72,6 +73,8 @@ function Home() {
 
   async function deleteTodo(id) {
 
+    setListUpdated(listUpdated + 1)
+
     console.log("delete todo func")
 
     const { error } = await supabase
@@ -80,11 +83,14 @@ function Home() {
       .eq('id', id)
 
     const { error1 } = await supabase
-    .from('todo-completions')
-    .delete()
-    .eq('id', id)
+      .from('todo-completions')
+      .delete()
+      .eq('id', id)
 
-    setListUpdated(listUpdated + 1)
+
+
+
+    console.log(listUpdated)
 
   }
 
@@ -124,22 +130,33 @@ function Home() {
 
         if (data) {
           setTodoLogs(data)
+
         }
     }
 
     fetchTodoLogs()
 
-    console.log(todos, todoLogs, "here")
-
-
-    let dataTable = <DataTable todos={todos} todoLogs={todoLogs} deleteTodo={deleteTodo} toggleTodo={toggleTodo}></DataTable>
-    setDataTable(dataTable)
-
-
   }, [listUpdated])
 
 
+  useEffect(() => {
 
+    console.log("table render rerun")
+
+    if (todos && todoLogs) {
+
+      console.log("render rerun, made past if statmenet")
+
+      setDataTable(<DataTable todos={todos} todoLogs={todoLogs} deleteTodo={deleteTodo} toggleTodo={toggleTodo}></DataTable>)
+  
+
+    } else {
+
+      console.log("1.3 could not updated table")
+
+    }
+
+  }, [listUpdated, todos, todoLogs])
 
 
 
@@ -156,22 +173,10 @@ function Home() {
 
       </div>
 
-      
-      {//console.log(dataTable)
-      }
-
-
-      {//dataTable1
-      }
-
       <Suspense>
-        {dataTable}
+        {dataTable} 
       </Suspense>
-
-
-      {//<p>Hello world</p>
-      }
-
+      
 
 
     </div>

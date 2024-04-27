@@ -2,6 +2,9 @@ import React from 'react';
 
 class DataTable extends React.Component {
 
+
+
+
     constructor(props) {
         super(props);
 
@@ -21,6 +24,8 @@ class DataTable extends React.Component {
 
     try {
 
+      console.log("made it to dataTable")
+
       const tableRows = data.map((todoLog) => (
 
 
@@ -37,6 +42,8 @@ class DataTable extends React.Component {
           <td><button><i className="material-icons" onClick={() => {this.deleteTodo(todoLog.id)}}>delete</i></button></td>
         </tr>
       ));
+
+      console.log("made it to dataTable v2")
 
       return (
         <table>
