@@ -19,8 +19,9 @@ function Home() {
 
   const [listUpdated, setListUpdated] = useState(0);
 
-  const [dataTable, setDataTable] = useState(<p>Data Table Loading...</p>);
-  const [dataTable1, setDataTable1] = useState(<p>Data Table 1 Loading...</p>);
+  const [dataTable, setDataTable] = useState(null);
+
+  //const [dataTable1, setDataTable1] = useState(<p>Data Table 1 Loading...</p>);
 
 
 
@@ -128,16 +129,14 @@ function Home() {
 
     fetchTodoLogs()
 
+    console.log(todos, todoLogs, "here")
+
 
     let dataTable = <DataTable todos={todos} todoLogs={todoLogs} deleteTodo={deleteTodo} toggleTodo={toggleTodo}></DataTable>
-
-
     setDataTable(dataTable)
 
 
   }, [listUpdated])
-
-
 
 
 
@@ -158,14 +157,20 @@ function Home() {
       </div>
 
       
-      {console.log(dataTable)}
+      {//console.log(dataTable)
+      }
 
 
-      {dataTable1}
+      {//dataTable1
+      }
 
-      {dataTable}
+      <Suspense>
+        {dataTable}
+      </Suspense>
 
-      {<p>Hello world</p>}
+
+      {//<p>Hello world</p>
+      }
 
 
 

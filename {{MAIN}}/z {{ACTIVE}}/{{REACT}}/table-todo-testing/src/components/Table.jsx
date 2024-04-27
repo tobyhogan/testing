@@ -62,12 +62,11 @@ class DataTable extends React.Component {
 
     } catch (error) {
 
-      console.log("22 could not render table, data not available", error)
+      console.log(error)
+
+      return (<p>Table Loading...</p>)
 
     }
-
-    // Render the table with the generated rows
-    
   }
 }
 
