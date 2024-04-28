@@ -173,9 +173,7 @@ function Home() {
 
       </div>
 
-      <Suspense>
-        {dataTable} 
-      </Suspense>
+      {dataTable} 
       
 
 
