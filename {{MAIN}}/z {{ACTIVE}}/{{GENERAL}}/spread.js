@@ -7,3 +7,4 @@ console.log(...arr, arr)
 arr => [arr, 7]
 
 console.log(arr)
+
