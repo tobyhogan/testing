@@ -1,9 +1,19 @@
+// imports: react, reactDOM
+
 import React, { HTMLAttributes, HTMLProps } from 'react'
 import ReactDOM from 'react-dom/client'
 
+
+//stylesheet
+
 import './index.css'
 
+
+// getting the ability to make data
+
 import { makeData, Person } from './makeData'
+
+// tanstack table imports
 
 import {
   Column,
@@ -16,7 +26,13 @@ import {
   useReactTable,
 } from '@tanstack/react-table'
 
+
+
 function App() {
+
+
+  // useReducer is similar to useState, but for states with more copmlex logic
+
   const rerender = React.useReducer(() => ({}), {})[1]
 
   const [rowSelection, setRowSelection] = React.useState({})
