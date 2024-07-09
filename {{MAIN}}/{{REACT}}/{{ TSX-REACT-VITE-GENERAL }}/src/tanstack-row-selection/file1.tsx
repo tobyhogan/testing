@@ -34,10 +34,12 @@ function App() {
   // useReducer is similar to useState, but for states with more copmlex logic
 
   const rerender = React.useReducer(() => ({}), {})[1]
-  
+
 
   const [rowSelection, setRowSelection] = React.useState({})
   const [globalFilter, setGlobalFilter] = React.useState('')
+
+  // useMemo allows for caching of frequently re-used values
 
   const columns = React.useMemo<ColumnDef<Person>[]>(
     () => [
@@ -120,6 +122,8 @@ function App() {
 
   const [data, setData] = React.useState(() => makeData(100000))
   const refreshData = () => setData(() => makeData(100000))
+
+  // tanstack table instantiation
 
   const table = useReactTable({
     data,
