@@ -4,26 +4,31 @@ import ReactDOM from 'react-dom/client'
 import { ColumnDef, flexRender, getCoreRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table'
 
 import './index.css'
-import { makeData, Person } from './makeData'
+
+type Habit = { title: string, dNeg1: number, dNeg2: number, total: number }
 
 
 function App() {
-  //const rerender = React.useReducer(() => ({}), {})[1]
   const [rowSelection, setRowSelection] = React.useState({})
 
-  const columns = React.useMemo<ColumnDef<Person>[]>(() =>
-    [{ id: 'select', header: () => {} , cell: ({ row }) =>(<div>
-        <IndeterminateCheckbox {...{ checked: row.getIsSelected(), disabled: !row.getCanSelect(), indeterminate: row.getIsSomeSelected(), onChange: row.getToggleSelectedHandler(),}}/>
-    </div>)},
+  const columns = React.useMemo<ColumnDef<Habit>[]>(() =>
+    
+    [{ id: 'select', cell: () =>(<input type='checkbox'></input>)},
 
     {accessorKey: 'title', cell: info => info.getValue() },
-    {accessorKey: 'visits', header: '06', footer: props => props.column.id },
-    {accessorKey: 'status', header: '07', footer: props => props.column.id },
-    {accessorKey: 'progress', header: 'total', footer: props => props.column.id, }, ], [])
+    {accessorKey: 'dNeg1', header: '07/07' },
+    {accessorKey: 'dNeg2', header: '06/07' },
+    {accessorKey: 'total', header: 'total' }, ], [])
 
-  const [data, {/*setData*/}] = React.useState(() => makeData(100000))
-  //const refreshData = () => setData(() => makeData(100000))
 
+  const data = [
+    {title: "test1", dNeg1: 1, dNeg2: 2, total: 18},
+    {title: "test2", dNeg1: 1, dNeg2: 2, total: 18},
+    {title: "test3", dNeg1: 1, dNeg2: 2, total: 18},
+    {title: "test4", dNeg1: 1, dNeg2: 2, total: 18},
+  ]
+
+  console.log(data)
 
   const table = useReactTable({
     data, columns, state: {rowSelection, }, enableRowSelection: true, 
@@ -43,11 +48,6 @@ function App() {
 }
 
 
-
-function IndeterminateCheckbox({indeterminate, className = '', ...rest }: { indeterminate?: boolean } & HTMLProps<HTMLInputElement>) {const ref = React.useRef<HTMLInputElement>(null!)
-
-  React.useEffect(() => { if (typeof indeterminate === 'boolean') {ref.current.indeterminate = !rest.checked && indeterminate}}, [ref, indeterminate])
-  return (<input type="checkbox" ref={ref} className={className + ' cursor-pointer'}{...rest}/>)}
 
 
 const rootElement = document.getElementById('root')
