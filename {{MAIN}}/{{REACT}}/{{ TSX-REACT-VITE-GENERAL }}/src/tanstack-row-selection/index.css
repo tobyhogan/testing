@@ -24,3 +24,16 @@ tfoot {
 tfoot th {
   font-weight: normal;
 }
+
+
+.TableContainer {
+  display: flex;
+  justify-content: space-around;
+  margin: 100px 0 0 0;
+}
+
+.TableContainer table {
+
+  display: auto;
+  
+}

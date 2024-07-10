@@ -30,19 +30,15 @@ function App() {
     onRowSelectionChange: setRowSelection, getCoreRowModel: getCoreRowModel(), getPaginationRowModel: getPaginationRowModel(), debugTable: true, })
 
   return (
-    <div className="p-2"><div className="h-2" /><table><thead>
+    <div className="TableContainer"><table><thead>
       {table.getHeaderGroups().map(headerGroup => (<tr key={headerGroup.id}>{headerGroup.headers.map(header => {
         return (<th key={header.id} colSpan={header.colSpan}>{header.isPlaceholder ? null :
         (<>{flexRender( header.column.columnDef.header,header.getContext())}</>)}</th>)})}</tr>))}</thead>
 
         <tbody>{table.getRowModel().rows.map(row => {return (<tr key={row.id}>{row.getVisibleCells().map(cell => {return (
         <td key={cell.id}>{flexRender(cell.column.columnDef.cell,cell.getContext())}</td>)})}</tr>)})}
-        </tbody></table><div className="h-2" />
 
-      {/*<div><button className="border rounded p-2 mb-2" onClick={() => rerender()}>Force Rerender</button></div>
-      <div><button className="border rounded p-2 mb-2" onClick={() => refreshData()}>Refresh Data</button></div>*/}
-
-    </div>
+    </tbody></table></div>
   )
 }
 
