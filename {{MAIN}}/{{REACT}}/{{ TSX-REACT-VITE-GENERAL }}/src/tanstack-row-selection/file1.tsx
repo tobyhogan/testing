@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { ColumnDef, flexRender, getCoreRowModel, getPaginationRowModel, useReactTable } from '@tanstack/react-table'
+import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 
 import './index.css'
 
@@ -9,7 +9,7 @@ type Habit = { title: string, dNeg1: number, dNeg2: number, total: number }
 
 
 function App() {
-  const [rowSelection, setRowSelection] = React.useState({})
+
 
   const columns = React.useMemo<ColumnDef<Habit>[]>(() =>
     
@@ -28,22 +28,28 @@ function App() {
     {title: "test4", dNeg1: 1, dNeg2: 2, total: 18},
   ]
 
-  console.log(data)
+  //console.log(data)
 
   const table = useReactTable({
-    data, columns, state: {rowSelection, }, enableRowSelection: true, 
-    onRowSelectionChange: setRowSelection, getCoreRowModel: getCoreRowModel(), getPaginationRowModel: getPaginationRowModel(), debugTable: true, })
+    data, columns, enableRowSelection: true, getCoreRowModel: getCoreRowModel(), debugTable: true, })
 
   return (
-    <div className="TableContainer"><table><thead>
-      {table.getHeaderGroups().map(headerGroup => (<tr key={headerGroup.id}>{headerGroup.headers.map(header => {
+    <div className="TableContainer"><table className='border-none'>
+      <thead>
+        
+        {table.getHeaderGroups().map(headerGroup => (<tr key={headerGroup.id}>{headerGroup.headers.map(header => {
         return (<th key={header.id} colSpan={header.colSpan}>{header.isPlaceholder ? null :
-        (<>{flexRender( header.column.columnDef.header,header.getContext())}</>)}</th>)})}</tr>))}</thead>
+        (<>{flexRender( header.column.columnDef.header,header.getContext())}</>)}</th>)})}</tr>))}
 
-        <tbody>{table.getRowModel().rows.map(row => {return (<tr key={row.id}>{row.getVisibleCells().map(cell => {return (
-        <td key={cell.id}>{flexRender(cell.column.columnDef.cell,cell.getContext())}</td>)})}</tr>)})}
+      </thead>
+        <tbody>
 
-    </tbody></table></div>
+          {table.getRowModel().rows.map(row => {return (<tr key={row.id}>{row.getVisibleCells().map(cell => {return (
+          <td key={cell.id}>{flexRender(cell.column.columnDef.cell,cell.getContext())}</td>)})}</tr>)})}
+
+        </tbody>
+      </table>
+    </div>
   )
 }
 
@@ -53,4 +59,4 @@ function App() {
 const rootElement = document.getElementById('root')
 if (!rootElement) throw new Error('Failed to find the root element')
 
-ReactDOM.createRoot(rootElement).render(<React.StrictMode><App /></React.StrictMode>)
+ReactDOM.createRoot(rootElement).render(<App />)
