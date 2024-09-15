@@ -9,7 +9,7 @@ function Main() {
     <div>
       {myArr.map((i) => 
       
-        <div key={i} className='bg-blue-700 w-12 h-6 border-1'>div</div>
+        <div key={i} className='bg-blue-700 text-white w-12 h-6 border-2 border-black' onContextMenu={() => console.log("hi")}>div</div>
 
       )}
     </div>
