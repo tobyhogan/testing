@@ -1,16 +1,15 @@
-//@ts-nocheck
-import './App.css'
+
 
 function Main() {
 
 
-  var myArr = Array.from({length: 20}, (x, i) => i)
+  var myArr = Array.from({length: 10}, (x, i) => i)
 
   return (
     <div>
       {myArr.map((i) => 
       
-        <div key={i} className='bg-blue-700 text-white w-12 h-6 border-2 border-black' onContextMenu={() => console.log("hi")}>div</div>
+        <button key={i} className='bg-blue-700 text-white w-fit h-fit border-2 border-black p-2' onClick={() => console.log("button: ", i)}>This Button</button>
 
       )}
     </div>
